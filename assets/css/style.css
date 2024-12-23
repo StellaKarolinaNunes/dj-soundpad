@@ -1,0 +1,177 @@
+/* --------------------------------------
+   Autor: Stella Karolina
+   Data: 23/12/2024
+   Descrição: Estilos para interface DJ
+----------------------------------------- */
+
+/* --------------------
+   Configurações globais
+----------------------- */
+
+/* Variáveis de design */
+:root {
+  --font-main: "Press Start 2P", cursive;
+  --color-bg-start: #1e2a47;
+  --color-bg-mid: #4b56d2;
+  --color-bg-end: #d62e00;
+  --color-primary: #0ff;
+  --color-secondary: #fff;
+  --color-shadow: #000;
+  --color-led-red: #ff0000;
+  --color-led-green: #00ff00;
+  --color-led-blue: #0000ff;
+  --gradient-key-normal: linear-gradient(145deg, #111, #333);
+  --gradient-key-hover: linear-gradient(145deg, #444, #555);
+  --gradient-key-active: linear-gradient(145deg, #666, #777);
+  --shadow-key-inset: inset 0 -4px 8px rgba(0, 0, 0, 0.6);
+  --shadow-key-hover: 0 0 20px rgba(255, 255, 255, 0.1);
+  --shadow-key-active: inset 0 4px 8px rgba(255, 255, 255, 0.3);
+  --radius-key: 10px;
+  --radius-mixer: 12px;
+  --font-size-h1: 2.5em;
+}
+
+body {
+  font-family: var(--font-main);
+  background: linear-gradient(
+    45deg,
+    var(--color-bg-start),
+    var(--color-bg-mid),
+    var(--color-bg-end)
+  );
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
+  color: var(--color-secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* ----------------------
+   Estruturas principals
+------------------------- */
+
+.dj-container {
+  text-align: center;
+}
+
+/* ---------------------
+   Títulos e cabeçalhos
+----------------------- */
+
+h1 {
+  font-size: var(--font-size-h1);
+  color: var(--color-primary);
+  text-shadow: 0 0 15px var(--color-primary), 0 0 30px var(--color-primary);
+  margin-bottom: 30px;
+}
+
+/* -------------------
+   Layouts principais
+--------------------- */
+
+.mixer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: linear-gradient(145deg, #222, #111);
+  border-radius: var(--radius-mixer);
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+}
+
+.sound-pad {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+}
+
+.key {
+  width: 80px;
+  height: 80px;
+  background: var(--gradient-key-normal);
+  border-radius: var(--radius-key);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  color: var(--color-secondary);
+  text-shadow: 0 0 5px var(--color-shadow);
+  box-shadow: var(--shadow-key-inset), 0 5px 10px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.key:hover {
+  transform: scale(1.1);
+  background: var(--gradient-key-hover);
+  box-shadow: var(--shadow-key-hover);
+}
+
+.key:active {
+  transform: scale(0.9);
+  background: var(--gradient-key-active);
+  box-shadow: var(--shadow-key-active);
+}
+
+/* ----------------------
+   Elementos auxiliares
+------------------------ */
+
+.led-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+
+.led {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-led-red), #660000);
+  box-shadow: 0 0 10px var(--color-led-red);
+  animation: blink 2s infinite;
+}
+
+.led:nth-child(2) {
+  background: radial-gradient(circle, var(--color-led-green), #006600);
+  box-shadow: 0 0 10px var(--color-led-green);
+  animation-delay: 0.5s;
+}
+
+.led:nth-child(3) {
+  background: radial-gradient(circle, var(--color-led-blue), #000066);
+  box-shadow: 0 0 10px var(--color-led-blue);
+  animation-delay: 1s;
+}
+
+/* ------------------
+   Animações gerais
+------------------- */
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
